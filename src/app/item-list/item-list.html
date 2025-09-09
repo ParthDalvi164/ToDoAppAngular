@@ -1,0 +1,14 @@
+<div style="display: flex; justify-content: center; align-items: center; margin: 200px; flex-direction: column; gap: 10px;">
+    <div class="form-floating w-25">
+        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" (input)="tempItem = $event.target.value">
+        <label for="floatingInput">Enter string</label>
+    </div>
+
+    <button class="btn btn-primary w-25" (click)="addItem()"><b>Add</b></button>
+
+    <ul class="list-group w-25">
+        @for(item of listItems; track item) {
+            <li class="list-group-item">{{ item }}</li>
+        }
+    </ul>
+</div>

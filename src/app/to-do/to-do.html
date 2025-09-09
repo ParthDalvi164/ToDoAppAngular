@@ -1,0 +1,42 @@
+<div style="display: flex; justify-content: center; align-items: center; margin: 100px; flex-direction: column; gap: 10px;">
+    <h2 style="align-self: flex-center; margin-bottom: 20px;"><b>TO DO APP</b></h2>
+    <div class="form-floating w-50">
+        <input type="email" class="form-control" id="floatingInput" placeholder="" (input)="tempCategory = $event.target.value" [value]="tempCategory">
+        <label for="floatingInput">Enter Category</label>
+    </div>
+    <div class="form-floating w-50">
+        <input type="email" class="form-control" id="floatingInput" placeholder="" (input)="tempTitle = $event.target.value" [value]="tempTitle">
+        <label for="floatingInput">Enter Title</label>
+    </div>
+    <div class="form-floating w-50">
+        <input type="email" class="form-control" id="floatingInput" placeholder="" (input)="tempDescription = $event.target.value" [value]="tempDescription">
+        <label for="floatingInput">Enter Description</label>
+    </div>
+
+    <button class="btn btn-primary w-50" (click)="addItem()"><b>+ Add Task</b></button>
+
+    <!-- <ul class="list-group w-50">
+        @for(item of toDoItems; track item) {
+            <li class="list-group-item">{{ item }}</li>
+        }
+    </ul> -->
+
+    @for(item of toDoItems; track item; let i = $index) {
+        <div class="card w-50" [class.completed]="item.Done">
+            <div class="card-header">
+                {{ item.Category }}
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"><b>{{ item.Title }}</b></h5>
+                <p>Status : @if(item.Done) {
+                        <span style="color: green; font-weight: bold;">COMPLETED</span>
+                    } @else {
+                        <span style="color: #CDA434; font-weight: bold;">PENDING</span>
+                    }</p>
+                <p class="card-text">{{ item.Description }}</p>
+                <a (click)="markDoneItem(i)" class="btn btn-success m-1">Mark As Done!</a>
+                <a (click)="removeItem(i)" class="btn btn-secondary">Remove</a>
+            </div>
+        </div>
+    }
+</div>
